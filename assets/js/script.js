@@ -14,34 +14,35 @@ function initMap() {
             strictBounds: true,
         },
     });
-    let location = {lat: 48.0196, lng: 66.9237}; 
-    let marker = new google.maps.Marker({position: location, map: map});
+    let locations = [
+        {name:'Тест1',lat: 48.0196, lng: 66.9237},
+        {name:'Тест2',lat: 49.0196, lng: 67.9237}
+    ]; 
 
     let mapNotification = document.getElementById('map-notification');
     let mapNotificationBtn = document.getElementById('map-notification-button');
-    
-    mapNotificationBtn.addEventListener('click',function(){
-        mapNotification.style.display = 'none'
-    })
-    marker.addListener('click', function() {
-        let countDown = 5; 
-        mapNotification.style.display = 'block';
-    
+    let mapNotificationText = document.getElementById('map-notification-text');
 
-        let updateCountDown = function() {
-            mapNotificationBtn.innerText = `Ок (${countDown})`;
-            countDown--; 
-            if (countDown < 0) {
-                clearInterval(timer);
-                mapNotification.style.display = 'none';    
+    for(let location of locations){
+        let marker = new google.maps.Marker({position: location, map: map});
+        mapNotificationText.innerText = `Найдите на карте ${location['name']}`;
+        mapNotificationBtn.addEventListener('click',function(){
+            mapNotification.style.display = 'none'
+        })
+        marker.addListener('click', function() {
+            let countDown = 5; 
+            mapNotification.style.display = 'block';
+            console.log(`${location['name']}`);
+            let updateCountDown = function() {
+                mapNotificationBtn.innerText = `Ок (${countDown})`;
+                countDown--; 
+                if (countDown < 0) {
+                    clearInterval(timer);
+                    mapNotification.style.display = 'none';    
+                }
             }
-        }
-        updateCountDown();
-        let timer = setInterval(updateCountDown, 1000);
-    });
-    
-    
+            updateCountDown();
+            let timer = setInterval(updateCountDown, 1000);
+        });
+    }
 }
-
-
-

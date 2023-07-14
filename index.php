@@ -13,7 +13,7 @@
         <p id="map-title-text"></p>
     </div>
 <div id="map-notification">
-    <p id="map-notification-text">Lorem ipsum dolor sit amet consectetur adipum quod, boriosam, nihil nam sunt voluptate maiores.</p>
+    <p id="map-notification-text"></p>
     <button id="map-notification-button">Ок (5)</button>
 </div>
 <div id="map"></div>
