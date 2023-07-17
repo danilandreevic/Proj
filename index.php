@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="map-title"> 
-        <p id="map-title-text"></p>
+        <p id="map-title-text">123</p>
     </div>
 <div id="map-notification">
     <p id="map-notification-text"></p>

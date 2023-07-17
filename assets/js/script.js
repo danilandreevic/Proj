@@ -15,20 +15,22 @@ function initMap() {
         },
     });
     let locations = [
-        {name:'Тест1',lat: 48.0196, lng: 66.9237},
-        {name:'Тест2',lat: 49.0196, lng: 67.9237}
+        {name:'Тест1',type:'Гору',lat: 48.0196, lng: 66.9237},
+        {name:'Тест2',type:'Реку',lat: 49.0196, lng: 67.9237}
     ]; 
 
     let mapNotification = document.getElementById('map-notification');
     let mapNotificationBtn = document.getElementById('map-notification-button');
     let mapNotificationText = document.getElementById('map-notification-text');
-
+    let mapTitleText = document.getElementById('map-title-text');
+    
     for(let location of locations){
         let marker = new google.maps.Marker({position: location, map: map});
-        mapNotificationText.innerText = `Найдите на карте ${location['name']}`;
+        mapNotificationText.innerText = `Это ${location['name']}`;
         mapNotificationBtn.addEventListener('click',function(){
             mapNotification.style.display = 'none'
         })
+        mapTitleText.innerText = `Найдите на карте ${location['type']}`
         marker.addListener('click', function() {
             let countDown = 5; 
             mapNotification.style.display = 'block';
